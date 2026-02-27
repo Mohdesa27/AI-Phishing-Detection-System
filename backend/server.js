@@ -21,3 +21,5 @@ app.use("/api/email", emailRoutes);
 app.listen(5000, () =>{
   console.log("Server running on port 5000");
 });
+const checkRoute = require("./routes/checkRoute");
+app.use("/api", checkRoute);
