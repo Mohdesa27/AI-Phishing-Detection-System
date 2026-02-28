@@ -14,8 +14,14 @@ function App() {
       body: JSON.stringify({ url: tab.url }),
     });
 
-    const data = await response.json();
-    setResult(data.status);
+    if (!response.ok) {
+  const text = await response.text();
+  console.error("Server Error:", text);
+  return;
+}
+
+const data = await response.json();
+    setResult(`${data.result} (Score: ${data.score})`);
   };
 
   return (
